@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f3ee">
+  <title>Little Sum — Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Little Sum home"><span class="brand-mark">＋</span> little sum</a>
+      <span class="top-note">A pocket-sized essential</span>
+    </header>
+
+    <section class="workspace" aria-label="Calculator">
+      <div class="intro">
+        <p class="eyebrow"><span class="eyebrow-dot"></span> READY WHEN YOU ARE</p>
+        <h1>Make it<br><span>add up.</span></h1>
+        <p class="intro-copy">The everyday math, made easy.</p>
+        <div class="mini-equation" aria-hidden="true"><span>08</span><b>+</b><span>15</span><i>=</i><strong>23</strong></div>
+      </div>
+
+      <div class="calculator tone-{{ tone }}">
+        <div class="calc-topline"><span>CALCULATOR</span><span class="live-dot" aria-label="Ready"></span></div>
+        <div class="display" aria-live="polite" aria-atomic="true">{{ display }}</div>
+        <form method="post" class="keypad" aria-label="Calculator keypad">
+          <input type="hidden" name="display" value="{{ display }}">
+          <input type="hidden" name="stored_value" value="{{ stored_value }}">
+          <input type="hidden" name="operator" value="{{ operator }}">
+          <input type="hidden" name="replace_display" value="{{ 'true' if replace_display else 'false' }}">
+          <input type="hidden" name="tone" value="{{ tone }}">
+
+          <button class="key key-clear" type="submit" name="key" value="clear">AC</button>
+          <button class="key key-operator" type="submit" name="key" value="/" aria-label="Divide">÷</button>
+          <button class="key key-operator" type="submit" name="key" value="*" aria-label="Multiply">×</button>
+          <button class="key key-operator" type="submit" name="key" value="-" aria-label="Subtract">−</button>
+
+          <button class="key" type="submit" name="key" value="7">7</button>
+          <button class="key" type="submit" name="key" value="8">8</button>
+          <button class="key" type="submit" name="key" value="9">9</button>
+          <button class="key key-operator key-tall" type="submit" name="key" value="+" aria-label="Add">+</button>
+
+          <button class="key" type="submit" name="key" value="4">4</button>
+          <button class="key" type="submit" name="key" value="5">5</button>
+          <button class="key" type="submit" name="key" value="6">6</button>
+
+          <button class="key" type="submit" name="key" value="1">1</button>
+          <button class="key" type="submit" name="key" value="2">2</button>
+          <button class="key" type="submit" name="key" value="3">3</button>
+          <button class="key key-equals key-tall" type="submit" name="key" value="equals" aria-label="Equals">=</button>
+
+          <button class="key key-zero" type="submit" name="key" value="0">0</button>
+          <button class="key" type="submit" name="key" value="decimal" aria-label="Decimal point">.</button>
+        </form>
+        <p class="calc-foot"><span>FOUR FUNCTIONS</span><span>NO FUSS <b>✳</b></span></p>
+      </div>
+    </section>
+
+    <footer class="page-footer"><span>GOOD THINGS, IN BALANCE.</span><span>01 / 01</span></footer>
+  </main>
+</body>
+</html>
